@@ -8,7 +8,7 @@ import cn.nukkit.event.entity.EntityDamageByEntityEvent;
 import cn.nukkit.event.entity.EntityDamageEvent;
 import cn.nukkit.event.entity.EntityDeathEvent;
 import cn.nukkit.event.player.PlayerJoinEvent;
-import net.comorevi.moneyapi.MoneySAPI;
+import net.comorevi.np.moneys.MoneySAPI;
 import net.comorevi.np.moneys.jobs.data.*;
 import net.comorevi.np.moneys.jobs.manager.JobDataHandler;
 import net.comorevi.np.moneys.jobs.manager.LevelCalculator;

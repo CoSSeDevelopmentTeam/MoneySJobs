@@ -4,7 +4,7 @@ import cn.nukkit.Player;
 import cn.nukkit.utils.ConfigSection;
 import cn.nukkit.utils.TextFormat;
 import net.comorevi.cphone.presenter.SharingData;
-import net.comorevi.moneyapi.MoneySAPI;
+import net.comorevi.np.moneys.MoneySAPI;
 import net.comorevi.np.moneys.jobs.data.EnumJob;
 import net.comorevi.np.moneys.jobs.manager.JobDataHandler;
 import net.comorevi.np.moneys.jobs.manager.LevelCalculator;
