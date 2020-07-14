@@ -1,20 +1,21 @@
-package net.comorevi.np.moneys.data;
+package net.comorevi.np.moneys.jobs.data;
 
 import cn.nukkit.block.Block;
 
-public enum EnumOre {
-    COAL_ORE(Block.COAL_ORE, 1.2, 5),
-    IRON_ORE(Block.IRON_ORE, 1.2, 5),
-    GOLD_ORE(Block.GOLD_ORE, 1.5, 5),
-    DIAMOND_ORE(Block.DIAMOND_ORE, 2.5, 5),
-    LAPIS_ORE(Block.LAPIS_ORE, 2.0, 5),
-    REDSTONE_ORE(Block.REDSTONE_ORE, 2.0, 5);
+public enum EnumCrops {
+    WHEAT_CROPS(Block.WHEAT_BLOCK, 2.0, 5),
+    CACTUS(Block.CACTUS, 1.5, 5),
+    PUMPKIN(Block.PUMPKIN, 3.0, 5),
+    MELON_BLOCK(Block.MELON_BLOCK, 3.0, 5),
+    CARROTS(Block.CARROT_BLOCK, 2.5, 5),
+    POTATOES(Block.POTATO_BLOCK, 2.5, 5),
+    BEETROOT(Block.BEETROOT_BLOCK, 3.0, 5);
 
     private final int id;
     private final double bonus;
     private final int exp;
 
-    private EnumOre(int id, double bonus, int exp) {
+    private EnumCrops(int id, double bonus, int exp) {
         this.id = id;
         this.bonus = bonus;
         this.exp = exp;
@@ -33,21 +34,21 @@ public enum EnumOre {
     }
 
     public static double getBonusByBlockID(int id) {
-        for (EnumOre value : EnumOre.values()) {
+        for (EnumCrops value : EnumCrops.values()) {
             if (value.getId() == id) return value.getBonus();
         }
         return 1;
     }
 
     public static boolean isRegistered(int id) {
-        for (EnumOre value : EnumOre.values()) {
+        for (EnumCrops value : EnumCrops.values()) {
             if (value.getId() == id) return true;
         }
         return false;
     }
 
     public static int getExpByNetworkID(int id) {
-        for (EnumOre value : EnumOre.values()) {
+        for (EnumCrops value : EnumCrops.values()) {
             if (value.getId() == id) return value.getExp();
         }
         return 1;
@@ -55,7 +56,7 @@ public enum EnumOre {
 
     @Override
     public String toString() {
-        return "EnumMiner{" +
+        return "EnumCrops{" +
                 "id=" + id +
                 ", bonus=" + bonus +
                 '}';

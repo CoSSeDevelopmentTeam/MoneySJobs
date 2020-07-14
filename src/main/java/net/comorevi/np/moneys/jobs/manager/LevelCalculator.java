@@ -1,6 +1,6 @@
-package net.comorevi.np.moneys.manager;
+package net.comorevi.np.moneys.jobs.manager;
 
-import net.comorevi.np.moneys.data.EnumJob;
+import net.comorevi.np.moneys.jobs.data.EnumJob;
 
 public class LevelCalculator {
     private static final LevelCalculator instance = new LevelCalculator();

@@ -1,20 +1,18 @@
-package net.comorevi.np.moneys.data;
+package net.comorevi.np.moneys.jobs.data;
 
-import cn.nukkit.entity.mob.*;
+import cn.nukkit.block.Block;
 
-public enum EnumCreature {
-    ZOMBIE(EntityZombie.NETWORK_ID, 2.0, 5),
-    HUSK(EntityHusk.NETWORK_ID, 2.0, 5),
-    DROWNED(EntityDrowned.NETWORK_ID, 2.0, 5),
-    SKELETON(EntitySkeleton.NETWORK_ID, 2.5, 5),
-    CREEPER(EntityCreeper.NETWORK_ID, 2.5, 5),
-    SPIDER(EntitySpider.NETWORK_ID, 2.0, 5);
+public enum EnumTree {
+    WOOD(Block.WOOD, 2.0, 5),
+    WOOD2(Block.WOOD2, 2.0, 5),
+    LEAVE(Block.LEAVE, 1.5, 5),
+    LEAVE2(Block.LEAVE2, 1.5, 5);
 
     private final int id;
     private final double bonus;
     private final int exp;
 
-    private EnumCreature(int id, double bonus, int exp) {
+    private EnumTree(int id, double bonus, int exp) {
         this.id = id;
         this.bonus = bonus;
         this.exp = exp;
@@ -32,22 +30,22 @@ public enum EnumCreature {
         return exp;
     }
 
-    public static double getBonusByEntityNetworkID(int id) {
-        for (EnumCreature value : EnumCreature.values()) {
+    public static double getBonusByBlockID(int id) {
+        for (EnumTree value : EnumTree.values()) {
             if (value.getId() == id) return value.getBonus();
         }
         return 1;
     }
 
     public static boolean isRegistered(int id) {
-        for (EnumCreature value : EnumCreature.values()) {
+        for (EnumTree value : EnumTree.values()) {
             if (value.getId() == id) return true;
         }
         return false;
     }
 
     public static int getExpByNetworkID(int id) {
-        for (EnumCreature value : EnumCreature.values()) {
+        for (EnumTree value : EnumTree.values()) {
             if (value.getId() == id) return value.getExp();
         }
         return 1;
@@ -55,7 +53,7 @@ public enum EnumCreature {
 
     @Override
     public String toString() {
-        return "EnumWarrior{" +
+        return "EnumTreeCutter{" +
                 "id=" + id +
                 ", bonus=" + bonus +
                 '}';

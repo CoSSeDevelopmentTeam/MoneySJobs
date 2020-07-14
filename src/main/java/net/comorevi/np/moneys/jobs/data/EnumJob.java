@@ -1,4 +1,4 @@
-package net.comorevi.np.moneys.data;
+package net.comorevi.np.moneys.jobs.data;
 
 public enum EnumJob {
     TREE_CUTTER("木こり", 0, 500, 1000, 2.5),

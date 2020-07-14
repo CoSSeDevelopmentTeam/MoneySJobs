@@ -1,4 +1,4 @@
-package net.comorevi.np.moneys.data;
+package net.comorevi.np.moneys.jobs.data;
 
 import cn.nukkit.block.BlockID;
 import cn.nukkit.entity.mob.*;

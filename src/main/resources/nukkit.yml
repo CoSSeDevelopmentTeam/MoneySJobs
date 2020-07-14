@@ -1,5 +1,5 @@
 name: MoneySJobs
-main: net.comorevi.np.moneys.Jobs
+main: net.comorevi.np.moneys.jobs.Main
 version: 1.0.0
 load: POSTWORLD
 author: popkechupki

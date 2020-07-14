@@ -1,8 +1,8 @@
-package net.comorevi.np.moneys.manager;
+package net.comorevi.np.moneys.jobs.manager;
 
 import cn.nukkit.utils.Config;
 import cn.nukkit.utils.ConfigSection;
-import net.comorevi.np.moneys.data.EnumJob;
+import net.comorevi.np.moneys.jobs.data.EnumJob;
 
 import java.io.File;
 

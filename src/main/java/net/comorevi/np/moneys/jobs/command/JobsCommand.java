@@ -1,9 +1,9 @@
-package net.comorevi.np.moneys.command;
+package net.comorevi.np.moneys.jobs.command;
 
 import cn.nukkit.Player;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
-import net.comorevi.np.moneys.form.FormHandler;
+import net.comorevi.np.moneys.jobs.form.FormHandler;
 
 public class JobsCommand extends Command {
 

@@ -1,4 +1,4 @@
-package net.comorevi.np.moneys;
+package net.comorevi.np.moneys.jobs;
 
 import cn.nukkit.Player;
 import cn.nukkit.event.EventHandler;
@@ -9,9 +9,9 @@ import cn.nukkit.event.entity.EntityDamageEvent;
 import cn.nukkit.event.entity.EntityDeathEvent;
 import cn.nukkit.event.player.PlayerJoinEvent;
 import net.comorevi.moneyapi.MoneySAPI;
-import net.comorevi.np.moneys.data.*;
-import net.comorevi.np.moneys.manager.JobDataHandler;
-import net.comorevi.np.moneys.manager.LevelCalculator;
+import net.comorevi.np.moneys.jobs.data.*;
+import net.comorevi.np.moneys.jobs.manager.JobDataHandler;
+import net.comorevi.np.moneys.jobs.manager.LevelCalculator;
 
 public class EventListener implements Listener {
     @EventHandler
