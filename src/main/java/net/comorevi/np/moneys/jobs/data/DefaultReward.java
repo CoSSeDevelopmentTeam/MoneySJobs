@@ -3,14 +3,14 @@ package net.comorevi.np.moneys.jobs.data;
 import cn.nukkit.block.BlockID;
 import cn.nukkit.entity.mob.*;
 
-public class EnumDefault {
+public class DefaultReward {
     public enum Mobs {
-        ZOMBIE(EntityZombie.NETWORK_ID, 800),
-        HUSK(EntityHusk.NETWORK_ID, 850),
-        DROWNED(EntityDrowned.NETWORK_ID, 850),
-        SKELETON(EntitySkeleton.NETWORK_ID, 800),
-        CREEPER(EntityCreeper.NETWORK_ID, 1000),
-        SPIDER(EntitySpider.NETWORK_ID, 800);
+        ZOMBIE(EntityZombie.NETWORK_ID, 400),
+        HUSK(EntityHusk.NETWORK_ID, 425),
+        DROWNED(EntityDrowned.NETWORK_ID, 425),
+        SKELETON(EntitySkeleton.NETWORK_ID, 400),
+        CREEPER(EntityCreeper.NETWORK_ID, 500),
+        SPIDER(EntitySpider.NETWORK_ID, 400);
 
         private final int id;
         private final int coin;
@@ -37,22 +37,22 @@ public class EnumDefault {
     }
 
     public enum Blocks {
-        STONE(BlockID.STONE, 200),
-        GRASS(BlockID.GRASS, 400),
-        DIRT(BlockID.DIRT, 200),
-        SAND(BlockID.SAND, 200),
-        SANDSTONE(BlockID.SANDSTONE, 300),
-        WOOD(BlockID.WOOD, 600),
-        WOOD2(BlockID.WOOD2, 600),
-        LEAVE(BlockID.LEAVE, 500),
-        LEAVE2(BlockID.LEAVE2, 500),
-        DIAMOND_ORE(BlockID.DIAMOND_ORE, 1000),
-        GOLD_ORE(BlockID.GOLD_ORE, 800),
-        IRON_ORE(BlockID.IRON_ORE, 700),
-        COAL_ORE(BlockID.COAL_ORE, 700),
-        LAPIS_ORE(BlockID.LAPIS_ORE, 600),
-        REDSTONE_ORE(BlockID.REDSTONE_ORE, 600),
-        EMERALD_ORE(BlockID.EMERALD_ORE, 800);
+        STONE(BlockID.STONE, 100),
+        GRASS(BlockID.GRASS, 200),
+        DIRT(BlockID.DIRT, 100),
+        SAND(BlockID.SAND, 100),
+        SANDSTONE(BlockID.SANDSTONE, 150),
+        WOOD(BlockID.WOOD, 300),
+        WOOD2(BlockID.WOOD2, 300),
+        LEAVE(BlockID.LEAVE, 250),
+        LEAVE2(BlockID.LEAVE2, 250),
+        DIAMOND_ORE(BlockID.DIAMOND_ORE, 500),
+        GOLD_ORE(BlockID.GOLD_ORE, 400),
+        IRON_ORE(BlockID.IRON_ORE, 350),
+        COAL_ORE(BlockID.COAL_ORE, 350),
+        LAPIS_ORE(BlockID.LAPIS_ORE, 300),
+        REDSTONE_ORE(BlockID.REDSTONE_ORE, 300),
+        EMERALD_ORE(BlockID.EMERALD_ORE, 400);
 
         private final int id;
         private final int coin;
