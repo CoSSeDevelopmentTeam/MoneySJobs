@@ -3,7 +3,7 @@ package net.comorevi.np.moneys.jobs.data;
 import cn.nukkit.block.BlockID;
 import cn.nukkit.entity.mob.*;
 
-public class DefaultReward {
+public class Reward {
     public enum Mobs {
         ZOMBIE(EntityZombie.NETWORK_ID, 400),
         HUSK(EntityHusk.NETWORK_ID, 425),
