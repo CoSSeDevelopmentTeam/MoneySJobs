@@ -6,12 +6,12 @@ import cn.nukkit.entity.mob.*;
 
 public class Incentive {
     public enum Creatures {
-        ZOMBIE(EntityZombie.NETWORK_ID, 2.0, 5),
-        HUSK(EntityHusk.NETWORK_ID, 2.0, 5),
-        DROWNED(EntityDrowned.NETWORK_ID, 2.0, 5),
-        SKELETON(EntitySkeleton.NETWORK_ID, 2.5, 5),
+        ZOMBIE(EntityZombie.NETWORK_ID, 1.5, 3),
+        HUSK(EntityHusk.NETWORK_ID, 1.5, 5),
+        DROWNED(EntityDrowned.NETWORK_ID, 1.5, 5),
+        SKELETON(EntitySkeleton.NETWORK_ID, 2.0, 3),
         CREEPER(EntityCreeper.NETWORK_ID, 2.5, 5),
-        SPIDER(EntitySpider.NETWORK_ID, 2.0, 5);
+        SPIDER(EntitySpider.NETWORK_ID, 2.0, 3);
 
         private final int id;
         private final double bonus;
@@ -66,13 +66,13 @@ public class Incentive {
     }
 
     public enum Crops {
-        WHEAT_CROPS(BlockID.WHEAT_BLOCK, 1.5, 5),
-        CACTUS(BlockID.CACTUS, 1.5, 5),
+        WHEAT_CROPS(BlockID.WHEAT_BLOCK, 1.5, 3),
+        CACTUS(BlockID.CACTUS, 1.2, 2),
         PUMPKIN(BlockID.PUMPKIN, 2.5, 5),
         MELON_BLOCK(BlockID.MELON_BLOCK, 2.5, 5),
-        CARROTS(BlockID.CARROT_BLOCK, 2.0, 5),
-        POTATOES(BlockID.POTATO_BLOCK, 2.0, 5),
-        BEETROOT(BlockID.BEETROOT_BLOCK, 2.0, 5);
+        CARROTS(BlockID.CARROT_BLOCK, 2.0, 3),
+        POTATOES(BlockID.POTATO_BLOCK, 2.0, 3),
+        BEETROOT(BlockID.BEETROOT_BLOCK, 2.0, 3);
 
         private final int id;
         private final double bonus;
@@ -127,10 +127,10 @@ public class Incentive {
     }
 
     public enum Ore {
-        COAL_ORE(Block.COAL_ORE, 1.2, 5),
-        IRON_ORE(Block.IRON_ORE, 1.2, 5),
-        GOLD_ORE(Block.GOLD_ORE, 1.5, 5),
-        DIAMOND_ORE(Block.DIAMOND_ORE, 2.5, 5),
+        COAL_ORE(Block.COAL_ORE, 1.2, 2),
+        IRON_ORE(Block.IRON_ORE, 1.5, 2),
+        GOLD_ORE(Block.GOLD_ORE, 1.7, 5),
+        DIAMOND_ORE(Block.DIAMOND_ORE, 3.0, 10),
         LAPIS_ORE(Block.LAPIS_ORE, 2.0, 5),
         REDSTONE_ORE(Block.REDSTONE_ORE, 2.0, 5);
 
@@ -187,10 +187,10 @@ public class Incentive {
     }
 
     public enum Trees {
-        WOOD(Block.WOOD, 2.0, 5),
-        WOOD2(Block.WOOD2, 2.0, 5),
-        LEAVE(Block.LEAVE, 1.5, 5),
-        LEAVE2(Block.LEAVE2, 1.5, 5);
+        WOOD(Block.WOOD, 1.7, 5),
+        WOOD2(Block.WOOD2, 1.7, 5),
+        LEAVE(Block.LEAVE, 1.2, 2),
+        LEAVE2(Block.LEAVE2, 1.2, 2);
 
         private final int id;
         private final double bonus;
