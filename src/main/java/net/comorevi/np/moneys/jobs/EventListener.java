@@ -21,20 +21,20 @@ public class EventListener implements Listener {
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
-        EnumJob job = EnumJob.getJobById(JobDataHandler.getInstance().getJobData(event.getPlayer().getName()).getInt("job"));
-        if (job == EnumJob.TREE_CUTTER) {
+        AvailableJobs job = AvailableJobs.getJobById(JobDataHandler.getInstance().getJobData(event.getPlayer().getName()).getInt("job"));
+        if (job == AvailableJobs.TREE_CUTTER) {
             MoneySAPI.getInstance().addCoin(event.getPlayer(), (int) (DefaultReward.Blocks.getRewardCoinById(event.getBlock().getId()) * EnumTree.getBonusByBlockID(event.getBlock().getId()) * JobDataHandler.getInstance().getJobData(event.getPlayer().getName()).getInt("level")));
             if (EnumTree.isRegistered(event.getBlock().getId())) {
                 JobDataHandler.getInstance().addExp(event.getPlayer().getName(), EnumTree.getExpByNetworkID(event.getBlock().getId()));
                 if (LevelCalculator.getInstance().levelUp(event.getPlayer().getName())) JobDataHandler.getInstance().levelUp(event.getPlayer().getName());
             }
-        } else if (job == EnumJob.MINER) {
+        } else if (job == AvailableJobs.MINER) {
             MoneySAPI.getInstance().addCoin(event.getPlayer(), (int) (DefaultReward.Blocks.getRewardCoinById(event.getBlock().getId()) * EnumOre.getBonusByBlockID(event.getBlock().getId()) * JobDataHandler.getInstance().getJobData(event.getPlayer().getName()).getInt("level")));
             if (EnumOre.isRegistered(event.getBlock().getId())) {
                 JobDataHandler.getInstance().addExp(event.getPlayer().getName(), EnumOre.getExpByNetworkID(event.getBlock().getId()));
                 if (LevelCalculator.getInstance().levelUp(event.getPlayer().getName())) JobDataHandler.getInstance().levelUp(event.getPlayer().getName());
             }
-        } else if (job == EnumJob.FARMER) {
+        } else if (job == AvailableJobs.FARMER) {
             MoneySAPI.getInstance().addCoin(event.getPlayer(), (int) (DefaultReward.Blocks.getRewardCoinById(event.getBlock().getId()) * EnumCrops.getBonusByBlockID(event.getBlock().getId()) * JobDataHandler.getInstance().getJobData(event.getPlayer().getName()).getInt("level")));
             if (EnumCrops.isRegistered(event.getBlock().getId())) {
                 JobDataHandler.getInstance().addExp(event.getPlayer().getName(), EnumCrops.getExpByNetworkID(event.getBlock().getId()));
@@ -52,7 +52,7 @@ public class EventListener implements Listener {
                 EntityDamageByEntityEvent event2 = (EntityDamageByEntityEvent) event.getEntity().getLastDamageCause();
                 if (event2.getDamager() instanceof Player) {
                     int defReward = DefaultReward.Mobs.getRewardCoinById(event.getEntity().getNetworkId());
-                    MoneySAPI.getInstance().addCoin((Player) event2.getDamager(), JobDataHandler.getInstance().getJobData(((Player) event2.getDamager()).getName()).getInt("job") == EnumJob.SWORDSMAN.getId() ? (int) (defReward * EnumCreature.getBonusByEntityNetworkID(event.getEntity().getNetworkId()) * JobDataHandler.getInstance().getJobData(event2.getDamager().getName()).getInt("level")) : defReward);
+                    MoneySAPI.getInstance().addCoin((Player) event2.getDamager(), JobDataHandler.getInstance().getJobData(((Player) event2.getDamager()).getName()).getInt("job") == AvailableJobs.SWORDSMAN.getId() ? (int) (defReward * EnumCreature.getBonusByEntityNetworkID(event.getEntity().getNetworkId()) * JobDataHandler.getInstance().getJobData(event2.getDamager().getName()).getInt("level")) : defReward);
                     if (EnumCreature.isRegistered(event.getEntity().getNetworkId())) {
                         JobDataHandler.getInstance().addExp(event2.getDamager().getName(), EnumCreature.getExpByNetworkID(event.getEntity().getNetworkId()));
                         if (LevelCalculator.getInstance().levelUp(event2.getDamager().getName())) JobDataHandler.getInstance().levelUp(event2.getDamager().getName());

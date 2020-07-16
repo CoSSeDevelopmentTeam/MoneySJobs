@@ -1,6 +1,6 @@
 package net.comorevi.np.moneys.jobs.data;
 
-public enum EnumJob {
+public enum AvailableJobs {
     TREE_CUTTER("木こり", 0, 500, 1000, 2.5),
     MINER("鉱夫", 1, 500, 1000, 2.5),
     FARMER("農家", 2, 500, 1000, 2.5),
@@ -12,7 +12,7 @@ public enum EnumJob {
     private final int initialCost;
     private final double levelCost;
 
-    private EnumJob(String name, int id, int cost, int initialCost, double levelCost) {
+    private AvailableJobs(String name, int id, int cost, int initialCost, double levelCost) {
         this.name = name;
         this.id = id;
         this.cost = cost;
@@ -40,8 +40,8 @@ public enum EnumJob {
         return levelCost;
     }
 
-    public static EnumJob getJobById(int id) {
-        for (EnumJob value : EnumJob.values()) {
+    public static AvailableJobs getJobById(int id) {
+        for (AvailableJobs value : AvailableJobs.values()) {
             if (value.getId() == id) return value;
         }
         throw new IllegalArgumentException("指定されたID(" + id + ")のデータは見つかりませんでした。");

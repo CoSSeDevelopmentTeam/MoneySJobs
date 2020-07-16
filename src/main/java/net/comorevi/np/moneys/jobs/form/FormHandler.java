@@ -5,7 +5,7 @@ import cn.nukkit.utils.ConfigSection;
 import cn.nukkit.utils.TextFormat;
 import net.comorevi.cphone.presenter.SharingData;
 import net.comorevi.np.moneys.MoneySAPI;
-import net.comorevi.np.moneys.jobs.data.EnumJob;
+import net.comorevi.np.moneys.jobs.data.AvailableJobs;
 import net.comorevi.np.moneys.jobs.manager.JobDataHandler;
 import net.comorevi.np.moneys.jobs.manager.LevelCalculator;
 import ru.nukkitx.forms.elements.ImageType;
@@ -57,21 +57,21 @@ public class FormHandler {
     public void sendJobList(Player player) {
         new SimpleForm()
                 .setTitle("ジョブ選択 - ジョブシステム")
-                .setContent("変更後のジョブを選択してください。\n現在のジョブ: " + EnumJob.getJobById(JobDataHandler.getInstance().getJobData(player.getName()).getInt("job")).getName())
-                .addButton(EnumJob.TREE_CUTTER.getName(), ImageType.PATH, "textures/items/wood_axe")
-                .addButton(EnumJob.MINER.getName(), ImageType.PATH, "textures/items/stone_pickaxe")
-                .addButton(EnumJob.FARMER.getName(), ImageType.PATH, "textures/items/gold_hoe")
-                .addButton(EnumJob.SWORDSMAN.getName(), ImageType.PATH, "textures/items/iron_sword")
+                .setContent("変更後のジョブを選択してください。\n現在のジョブ: " + AvailableJobs.getJobById(JobDataHandler.getInstance().getJobData(player.getName()).getInt("job")).getName())
+                .addButton(AvailableJobs.TREE_CUTTER.getName(), ImageType.PATH, "textures/items/wood_axe")
+                .addButton(AvailableJobs.MINER.getName(), ImageType.PATH, "textures/items/stone_pickaxe")
+                .addButton(AvailableJobs.FARMER.getName(), ImageType.PATH, "textures/items/gold_hoe")
+                .addButton(AvailableJobs.SWORDSMAN.getName(), ImageType.PATH, "textures/items/iron_sword")
                 .send(player, (target, form, data) -> {
                     if (data == -1) {
                         sendJobsHome(target);
                         return;
                     }
-                    sendJobConfirm(target, EnumJob.getJobById(form.getResponse().getClickedButtonId()));
+                    sendJobConfirm(target, AvailableJobs.getJobById(form.getResponse().getClickedButtonId()));
                 });
     }
 
-    public void sendJobConfirm(Player player, EnumJob job) {
+    public void sendJobConfirm(Player player, AvailableJobs job) {
         new ModalForm()
                 .setTitle("条件の確認 - ジョブシステム")
                 .setContent("以下の条件で転職しますか？\n\n転職後のジョブ: " + job.getName() + "\n転職費用: " + job.getCost() + MoneySAPI.UNIT + "\n!!!現在のジョブデータは消去されます！!!!")
@@ -97,10 +97,10 @@ public class FormHandler {
                 .setTitle("ステータス - ジョブシステム")
                 .setContent(
                         player.getName() + "さんのステータス\n" +
-                        "職種: " + EnumJob.getJobById(cs.getInt("job")).getName() + "\n" +
+                        "職種: " + AvailableJobs.getJobById(cs.getInt("job")).getName() + "\n" +
                         "経験値: " + cs.getInt("exp") + "\n" +
                         "レベル: " + cs.getInt("level") + "\n" +
-                        "次のレベルまで: " + (LevelCalculator.getInstance().calcNeededExp(EnumJob.getJobById(cs.getInt("job")), cs.getInt("level") + 1) - cs.getInt("exp")))
+                        "次のレベルまで: " + (LevelCalculator.getInstance().calcNeededExp(AvailableJobs.getJobById(cs.getInt("job")), cs.getInt("level") + 1) - cs.getInt("exp")))
                 .addButton("戻る")
                 .send(player, (target, form, data) -> {
                     sendJobsHome(target);

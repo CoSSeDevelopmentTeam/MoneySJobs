@@ -1,15 +1,15 @@
 package net.comorevi.np.moneys.jobs.data;
 
-import cn.nukkit.block.Block;
+import cn.nukkit.block.BlockID;
 
 public enum EnumCrops {
-    WHEAT_CROPS(Block.WHEAT_BLOCK, 2.0, 5),
-    CACTUS(Block.CACTUS, 1.5, 5),
-    PUMPKIN(Block.PUMPKIN, 3.0, 5),
-    MELON_BLOCK(Block.MELON_BLOCK, 3.0, 5),
-    CARROTS(Block.CARROT_BLOCK, 2.5, 5),
-    POTATOES(Block.POTATO_BLOCK, 2.5, 5),
-    BEETROOT(Block.BEETROOT_BLOCK, 3.0, 5);
+    WHEAT_CROPS(BlockID.WHEAT_BLOCK, 1.5, 5),
+    CACTUS(BlockID.CACTUS, 1.5, 5),
+    PUMPKIN(BlockID.PUMPKIN, 2.5, 5),
+    MELON_BLOCK(BlockID.MELON_BLOCK, 2.5, 5),
+    CARROTS(BlockID.CARROT_BLOCK, 2.0, 5),
+    POTATOES(BlockID.POTATO_BLOCK, 2.0, 5),
+    BEETROOT(BlockID.BEETROOT_BLOCK, 2.0, 5);
 
     private final int id;
     private final double bonus;
