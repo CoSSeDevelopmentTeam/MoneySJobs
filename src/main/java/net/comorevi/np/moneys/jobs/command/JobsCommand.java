@@ -21,7 +21,7 @@ public class JobsCommand extends Command {
             return true;
         }
 
-        FormHandler.getInstance().sendJobsHome((Player) commandSender, FormHandler.EnumPlayerClient.COMMAND);
+        FormHandler.getInstance().sendJobsHome((Player) commandSender, FormHandler.PlayerClient.COMMAND);
         return true;
     }
 }

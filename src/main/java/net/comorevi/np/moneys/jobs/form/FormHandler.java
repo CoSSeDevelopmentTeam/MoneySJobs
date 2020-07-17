@@ -16,11 +16,11 @@ import java.util.LinkedHashMap;
 
 public class FormHandler {
     private static final FormHandler instance = new FormHandler();
-    private LinkedHashMap<String, EnumPlayerClient> playerClient = new LinkedHashMap();
+    private LinkedHashMap<String, PlayerClient> playerClient = new LinkedHashMap();
 
-    public void sendJobsHome(Player player, EnumPlayerClient client) {
+    public void sendJobsHome(Player player, PlayerClient client) {
         playerClient.put(player.getName(), client);
-        sendJobsHome(player, "操作を選択してください。");
+        sendJobsHome(player, "操作を選択してください。\n閉じるボタンを押すとしふぉんホームに戻ります。");
     }
 
     private void sendJobsHome(Player player) {
@@ -30,12 +30,12 @@ public class FormHandler {
     private void sendJobsHome(Player player, String homeMessage) {
         new SimpleForm()
                 .setTitle("ジョブシステム")
-                .setContent(homeMessage)
+                .setContent(playerClient.get(player.getName()) == PlayerClient.COMMAND ? homeMessage : homeMessage + "\n閉じるボタンを押すとしふぉんホームに戻ります。")
                 .addButton("ジョブチェンジ", ImageType.PATH, "textures/ui/FriendsIcon")
                 .addButton("情報を見る", ImageType.PATH, "textures/ui/creative_icon")
                 .send(player, (target, form, data) -> {
                     if (data == -1) {
-                        if (playerClient.get(target.getName()) == EnumPlayerClient.COMMAND) {
+                        if (playerClient.get(target.getName()) == PlayerClient.COMMAND) {
                             target.sendMessage("[MoneySJobs] 終了しました。");
                         } else {
                             SharingData.phones.get(target.getName()).open();
@@ -115,13 +115,13 @@ public class FormHandler {
         return instance;
     }
 
-    public enum EnumPlayerClient {
+    public enum PlayerClient {
         COMMAND(0),
         CPHONE(1);
 
         private final int id;
 
-        private EnumPlayerClient(int id) {
+        private PlayerClient(int id) {
             this.id = id;
         }
 
