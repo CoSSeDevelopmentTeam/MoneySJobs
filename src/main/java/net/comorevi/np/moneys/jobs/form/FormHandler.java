@@ -1,13 +1,14 @@
 package net.comorevi.np.moneys.jobs.form;
 
 import cn.nukkit.Player;
-import cn.nukkit.utils.ConfigSection;
 import cn.nukkit.utils.TextFormat;
 import net.comorevi.cphone.presenter.SharingData;
 import net.comorevi.np.moneys.MoneySAPI;
 import net.comorevi.np.moneys.jobs.data.AvailableJobs;
-import net.comorevi.np.moneys.jobs.manager.JobDataHandler;
-import net.comorevi.np.moneys.jobs.manager.LevelCalculator;
+import net.comorevi.np.moneys.jobs.data.PlayerData;
+import net.comorevi.np.moneys.jobs.util.DataStore;
+import net.comorevi.np.moneys.jobs.util.JobDataHandler;
+import net.comorevi.np.moneys.jobs.util.LevelCalculator;
 import ru.nukkitx.forms.elements.ImageType;
 import ru.nukkitx.forms.elements.ModalForm;
 import ru.nukkitx.forms.elements.SimpleForm;
@@ -57,7 +58,7 @@ public class FormHandler {
     public void sendJobList(Player player) {
         new SimpleForm()
                 .setTitle("ジョブ選択 - ジョブシステム")
-                .setContent("変更後のジョブを選択してください。\n現在のジョブ: " + AvailableJobs.getJobById(JobDataHandler.getInstance().getJobData(player.getName()).getInt("job")).getName())
+                .setContent("変更後のジョブを選択してください。\n現在のジョブ: " + AvailableJobs.getJobById(DataStore.list.get(player.getName()).getJobId()).getName())
                 .addButton(AvailableJobs.TREE_CUTTER.getName(), ImageType.PATH, "textures/items/wood_axe")
                 .addButton(AvailableJobs.MINER.getName(), ImageType.PATH, "textures/items/stone_pickaxe")
                 .addButton(AvailableJobs.FARMER.getName(), ImageType.PATH, "textures/items/gold_hoe")
@@ -80,7 +81,9 @@ public class FormHandler {
                 .send(player, (target, form, data) -> {
                     if (form.getResponse().getClickedButtonId() == 0) {
                         if (MoneySAPI.getInstance().isPayable(target, job.getCost())) {
-                            JobDataHandler.getInstance().setJobData(target.getName(), job);
+                            DataStore.list.get(target.getName()).setJobId(job.getId());
+                            DataStore.list.get(target.getName()).setExp(0);
+                            DataStore.list.get(target.getName()).setLevel(1);
                             sendJobsHome(target, TextFormat.AQUA + "ジョブを変更しました！");
                         } else {
                             sendJobsHome(target, TextFormat.YELLOW + "所持金が不足しています。");
@@ -92,15 +95,15 @@ public class FormHandler {
     }
 
     public void sendJobStatus(Player player) {
-        ConfigSection cs = JobDataHandler.getInstance().getJobData(player.getName());
+        PlayerData pData = DataStore.list.get(player.getName());
         new SimpleForm()
                 .setTitle("ステータス - ジョブシステム")
                 .setContent(
                         player.getName() + "さんのステータス\n" +
-                        "職種: " + AvailableJobs.getJobById(cs.getInt("job")).getName() + "\n" +
-                        "経験値: " + cs.getInt("exp") + "\n" +
-                        "レベル: " + cs.getInt("level") + "\n" +
-                        "次のレベルまで: " + (LevelCalculator.getInstance().calcNeededExp(AvailableJobs.getJobById(cs.getInt("job")), cs.getInt("level") + 1) - cs.getInt("exp")))
+                        "職種: " + AvailableJobs.getJobById(pData.getJobId()).getName() + "\n" +
+                        "経験値: " + pData.getExp() + "\n" +
+                        "レベル: " + pData.getLevel() + "\n" +
+                        "次のレベルまで: " + (LevelCalculator.getInstance().calcNeededExp(AvailableJobs.getJobById(pData.getJobId()), pData.getLevel() + 1) - pData.getExp()))
                 .addButton("戻る")
                 .send(player, (target, form, data) -> {
                     sendJobsHome(target);

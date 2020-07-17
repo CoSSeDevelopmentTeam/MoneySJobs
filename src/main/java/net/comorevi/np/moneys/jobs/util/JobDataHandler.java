@@ -1,8 +1,9 @@
-package net.comorevi.np.moneys.jobs.manager;
+package net.comorevi.np.moneys.jobs.util;
 
 import cn.nukkit.utils.Config;
 import cn.nukkit.utils.ConfigSection;
 import net.comorevi.np.moneys.jobs.data.AvailableJobs;
+import net.comorevi.np.moneys.jobs.data.PlayerData;
 
 import java.io.File;
 
@@ -30,33 +31,22 @@ public class JobDataHandler {
         }
     }
 
-    public boolean addExp(String name, int value) {
-        config.set(name + ".exp", config.getInt(name + ".exp") + value);
-        return save();
-    }
-
-    public boolean levelUp(String name) {
-        config.set(name + ".level", config.getInt(name + ".level") + 1);
-        return save();
-    }
-
-    public boolean setJobData(String name, AvailableJobs job) {
-        return setJobData(name, job, 0, 0);
-    }
-
-    public boolean setJobData(String name, AvailableJobs job, int level, int exp) {
-        config.set(name + ".job", job.getId());
-        config.set(name + ".level", level);
-        config.set(name + ".exp", exp);
-        return save();
-    }
-
-    public ConfigSection getJobData(String name) {
+    public boolean loadJobData(String name) {
         if (!existsJobData(name)) {
-            throw new IllegalArgumentException("入力されたプレイヤーのデータは見つかりませんでした: " + name);
+            return false;
         } else {
-            return config.getSection(name);
+            ConfigSection cs = config.getSection(name);
+            DataStore.list.put(name, new PlayerData(cs.getInt("job"), cs.getInt("exp"), cs.getInt("level")));
+            return true;
         }
+    }
+
+    public boolean saveJobData(String name) {
+        PlayerData playerData = DataStore.list.get(name);
+        config.set(name + ".job", playerData.getJobId());
+        config.set(name + ".level", playerData.getLevel());
+        config.set(name + ".exp", playerData.getExp());
+        return save();
     }
 
     private boolean save() {
