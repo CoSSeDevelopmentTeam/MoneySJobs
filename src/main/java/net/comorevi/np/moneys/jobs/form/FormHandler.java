@@ -20,7 +20,7 @@ public class FormHandler {
 
     public void sendJobsHome(Player player, PlayerClient client) {
         playerClient.put(player.getName(), client);
-        sendJobsHome(player, "操作を選択してください。\n閉じるボタンを押すとしふぉんホームに戻ります。");
+        sendJobsHome(player, "操作を選択してください。");
     }
 
     private void sendJobsHome(Player player) {
